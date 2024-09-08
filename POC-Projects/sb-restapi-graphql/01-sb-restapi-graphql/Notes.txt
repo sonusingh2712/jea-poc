@@ -1,0 +1,35 @@
+For Graphql we use this dependency:
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-graphql</artifactId>
+    </dependency>
+===========================================================================
+We've replaced @RestController with @Controller in graphql.
+For all get-mapping urls we use @GetMapping annotation in Rest-Controller
+But in graphql in place of that we'll use @QueryMapping.
+So we've replaced all @GetMapping with @QueryMapping.
+In place of @PathVariable, we'll use @Argument in graphql.
+============================================================================
+Refer schema.graphqls file to understand more about declaring type of dto
+class and query mapping methods.
+============================================================================
+Through Postman, we can access by querying on url :
+http://localhost:<port-number>/graphql
+============================================================================
+How to enable graphql-dashboard :
+1.  Add configurations to yml files
+    spring.graphql.graphiql.enabled=true
+    spring.graphql.graphiql.path=/graphiql
+2.  Access through browser on url :
+    http://localhost:<port-number>/graphiql?path=/graphql
+
+example : http://localhost:9092/graphiql?path=/graphql
+============================================================================
+
+============================================================================
+
+============================================================================
+
+============================================================================
+
+============================================================================
