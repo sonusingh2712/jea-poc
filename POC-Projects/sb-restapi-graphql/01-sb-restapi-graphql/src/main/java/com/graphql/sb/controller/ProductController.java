@@ -37,7 +37,7 @@ public class ProductController {
         return service.getProductByCategory(category);
     }
 
-    // Sales Team wants to update stock after item sell.
+    //Sales Team want to update stock after item sell.
     @MutationMapping
     public Product updateStockAfterSale(@Argument int id, @Argument int stockSold){
         return service.updateStock(id, stockSold);
