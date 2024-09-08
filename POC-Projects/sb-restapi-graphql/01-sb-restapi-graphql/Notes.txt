@@ -1,3 +1,8 @@
+==============================================================================================
+Source of Learning :
+                    https://www.youtube.com/watch?v=GJc36OKFQ_M&t=1144s&ab_channel=JavaTechie
+                    https://www.youtube.com/watch?v=9uho8hsrJ5Y&t=629s&ab_channel=JavaTechie
+==============================================================================================
 For Graphql we use this dependency:
     <dependency>
         <groupId>org.springframework.boot</groupId>
