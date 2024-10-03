@@ -19,11 +19,12 @@ public class LoggerController {
 
     @GetMapping("/logs")
     public String getLoggerDetails(){
-        log.info("Info Logging started...");
-        log.debug("Debug Logging started...");
-        log.warn("Warn Logging started...");
-        log.error("Error Logging started...");
-        log.trace("Trace Log started...");
+        appService.getTraceLogger("Severity : 1 == Trace [By default disabled] ");
+        appService.getDebugLogger("Severity : 2 == Debug [By default disabled] ");
+        appService.getInfoLogger("Severity : 3 == Info [By default enabled] ");
+        appService.getWarnLogger("Severity : 4 == Warning [By default enabled] ");
+        appService.getErrorLogger("Severity : 5 == Error [By default enabled] ");
+        log.info("::::::::::::::::Logger in Controller:::::::::::::::::");
         return "Application Logging is successful.";
     }
 
