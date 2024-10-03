@@ -1,0 +1,84 @@
+==================================================================================================================================
+Source of Learning :
+https://www.youtube.com/watch?v=bphMYrTv8pA&list=PLA3GkZPtsafacdBLdd3p1DyRd5FGfr3Ue&index=25&t=397s&ab_channel=EngineeringDigest
+https://www.youtube.com/watch?v=KCPVLw4GOOw&ab_channel=JavaTechSolutions
+==================================================================================================================================
+For Graphql we use this dependency:
+1. Exclude the logging-dependency from spring-web
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <exclusions>
+            <exclusion>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-logging</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+
+2. Include log4j2 dependency
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-log4j2</artifactId>
+    </dependency>
+==================================================================================================================================
+LOGGER SEVERITY :
+    1. TRACE        [BY Default disabled]
+    2. DEBUG        [BY Default disabled]
+    3. INFO         [BY Default enabled]
+    4. WARN         [BY Default enabled]
+    5. ERROR        [BY Default enabled]
+==================================================================================================================================
+1. TO SET LOGGING LEVEL IN application.yml file
+    logging.level.<root-package-name>=LOGGER_SEVERITY_LEVEL {TRACE,DEBUG,INFO,WARN,ERROR}
+    example :
+             logging.level.com.logger.sb=DEBUG [It'll start logging debug and above severity, except trace]
+             logging.level.com.logger.sb=ERROR [It'll log only errors and skip all below severity logs]
+             logging.level.root=ERROR [It'll log only errors and skip all logs including spring-framework also]
+2. TO Stop/Off LOGGING from specific package
+    logging.level.<package-name>=OFF
+    example :
+             logging.level.com.logger.sb.controller=OFF
+             logging.level.root=OFF
+==================================================================================================================================
+How to configure log4j2.xml : https://www.youtube.com/watch?v=KCPVLw4GOOw&ab_channel=JavaTechSolutions
+
+1. create a file under resource directory.
+2. set xml and configuration tags properly.
+3. <Appenders> :
+                Appenders are responsible for delivering log events to their destination.
+                Every Appender must implement Appenders interface.
+4. <Console> :
+                This tag is used for logging on ide-console.
+                Target is system_out.
+5. <PatternLayout> :
+                PatternLayout is a customizable, efficient, garbage-free and human-readable string generating layout using a
+                user-provided pattern.
+
+                It is analogous to String.format() with specialized directives on injecting certain properties of a LogEvent.
+
+                Pattern Layout is not intended for structural logging purposes. For production environments, we are strongly
+                advised to use JSON Template Layout, producing JSON output ready to be delivered to log ingestion systems such
+                as Elasticsearch or Google Cloud Logging.
+
+Explanation of pattern = "%d{HH:mm:ss:SSS} %blue{[%t]} %-5level{ERROR=Error, length=3} %logger{36} - %msg%n" :
+18:19:17:802 [main] INF   org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http)
+
+                %d{HH:mm:ss:SSS} = Time Representation [Hours:Minutes:Seconds:MilliSeconds] = 18:19:17:802
+                %blue{[%t]} = Thread name in blue colour.
+                %-5level{ERROR=Error, length=3} = Logging Level shorten in 3-chars, except Error.
+                %logger{36} = Max 36 characters
+                %msg = message from the event
+                %n = new line
+                %d{DATE} = Complete Date information [03 Oct 2024 18:19:17,291]
+
+6. <Loggers> :  Tag is used map <Appenders-name> with logger level <Appender-Ref>.
+==================================================================================================================================
+For Rolling File Policy: https://logging.apache.org/log4j/2.x/manual/appenders/rolling-file.html
+==================================================================================================================================
+
+==================================================================================================================================
+
+==================================================================================================================================
+
+==================================================================================================================================

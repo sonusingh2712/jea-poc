@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: 02-sb-logger.poc
+
+server:
+  port: 8080
+
+logging:
+  level:
+    com:
+      logger:
+        sb: TRACE
