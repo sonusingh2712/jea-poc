@@ -3,7 +3,7 @@ Source of Learning :
 https://www.youtube.com/watch?v=bphMYrTv8pA&list=PLA3GkZPtsafacdBLdd3p1DyRd5FGfr3Ue&index=25&t=397s&ab_channel=EngineeringDigest
 https://www.youtube.com/watch?v=KCPVLw4GOOw&ab_channel=JavaTechSolutions
 ==================================================================================================================================
-For Graphql we use this dependency:
+For log4j2 we use this dependency:
 1. Exclude the logging-dependency from spring-web
     <dependency>
         <groupId>org.springframework.boot</groupId>

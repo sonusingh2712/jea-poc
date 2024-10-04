@@ -1,0 +1,43 @@
+==================================================================================================================================
+Source of Learning :
+==================================================================================================================================
+For aop and logger we use this dependency:
+1. Exclude the logging-dependency from spring-web
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <exclusions>
+            <exclusion>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-logging</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+
+2. Include log4j2 dependency
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-log4j2</artifactId>
+    </dependency>
+==================================================================================================================================
+==================================================================================================================================
+1. TO SET LOGGING LEVEL IN application.yml file
+    logging.level.<root-package-name>=LOGGER_SEVERITY_LEVEL {TRACE,DEBUG,INFO,WARN,ERROR}
+    example :
+             logging.level.com.logger.sb=DEBUG [It'll start logging debug and above severity, except trace]
+             logging.level.com.logger.sb=ERROR [It'll log only errors and skip all below severity logs]
+             logging.level.root=ERROR [It'll log only errors and skip all logs including spring-framework also]
+2. TO Stop/Off LOGGING from specific package
+    logging.level.<package-name>=OFF
+    example :
+             logging.level.com.logger.sb.controller=OFF
+             logging.level.root=OFF
+==================================================================================================================================
+
+==================================================================================================================================
+
+==================================================================================================================================
+
+==================================================================================================================================
+
+==================================================================================================================================
