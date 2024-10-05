@@ -1,7 +1,13 @@
 ==================================================================================================================================
 Source of Learning :
+--------------------
+                    https://docs.spring.io/spring-framework/reference/core/aop.html
+                    https://www.youtube.com/watch?v=P1emhviqEj4&ab_channel=AbhishekVerma
+                    http://javainsimpleway.com/aop-overview/
+                    https://howtodoinjava.com/spring-aop-tutorial/
 ==================================================================================================================================
-For aop and logger we use this dependency:
+For Logger and AOP we use this dependency:
+------------------------------------------
 1. Exclude the logging-dependency from spring-web
     <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -19,23 +25,27 @@ For aop and logger we use this dependency:
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-log4j2</artifactId>
     </dependency>
-==================================================================================================================================
-==================================================================================================================================
-1. TO SET LOGGING LEVEL IN application.yml file
-    logging.level.<root-package-name>=LOGGER_SEVERITY_LEVEL {TRACE,DEBUG,INFO,WARN,ERROR}
-    example :
-             logging.level.com.logger.sb=DEBUG [It'll start logging debug and above severity, except trace]
-             logging.level.com.logger.sb=ERROR [It'll log only errors and skip all below severity logs]
-             logging.level.root=ERROR [It'll log only errors and skip all logs including spring-framework also]
-2. TO Stop/Off LOGGING from specific package
-    logging.level.<package-name>=OFF
-    example :
-             logging.level.com.logger.sb.controller=OFF
-             logging.level.root=OFF
-==================================================================================================================================
 
+3.  <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-aop</artifactId>
+    </dependency>
 ==================================================================================================================================
-
+1.  Created a class "AppLogAspect" and added the annotation @Aspect & @Component
+2.  Created a method for reference of expression : loggerPointCut()
+    Added @PointCut annotation and execution-expression.
+    ex : execution(access_specifier package_name class_name method_name (arguments_list))
+3.  Declared @Before, @After, @AfterReturning, @AfterThrowing
+    @Before : Indicates that it should be executed before all the methods matching the specified pointcut expression.
+    @After  : Indicates that it should be executed after the methods that match the specified pointcut expression.
+    @AfterReturning : It is executed after a joinPoint completes,
+                      This annotation is particularly useful for scenarios where post-processing, logging or
+                      additional actions are required only upon successful method execution.
+    @AfterThrowing : It is executed after a joinPoint, that does not complete normally and ends up throwing an exception.
+                     To create an @AfterThrowing advice use this annotation on the advice method,
+                     and use the "throwing" attribute to capture the thrown exception.
+    @Around : The method accepts a parameter of type ProceedingJoinPoint.
+              It calls proceed() on the ProceedingJoinPoint to invoke the actual method.
 ==================================================================================================================================
 
 ==================================================================================================================================

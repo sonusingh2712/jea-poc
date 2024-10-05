@@ -6,7 +6,7 @@
     </Properties>
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{yy-MM-dd HH:mm:ss:SSS} %blue{[%t]} %-5level{ERROR=Error, length=3} %logger{36} -- %msg%n"/>
+            <PatternLayout pattern="%d{yy-MM-dd HH:mm:ss:SSS} %blue{[%t]} %-5level %logger{36} -- %msg%n"/>
         </Console>
         <!-- Matches from Info to Trace logs level -->
         <RollingFile name="applicationLog" fileName="${filePath}/application.log" filePattern="${filePath}/application-%d{yyyy-MM-dd-HH-mm}.log" append="true">
@@ -40,9 +40,9 @@
             <AppenderRef ref="Console"/>
         </Logger>
 
-        <!-- Logging level from root is set to be : all -->
+        <!-- Logging level from root is set to be : all [trace,debug,info,warn,error,all]-->
         <Root level="all">
-            <AppenderRef ref="Console"/>
+            <AppenderRef ref="applicationLog"/>
         </Root>
     </Loggers>
 
